@@ -35,13 +35,14 @@ export default class Coursecart extends Component {
                               <p className="text-muted">
                                 <small>{node.description.description}</small>
                               </p>
-                              <button 
+                              <button
                                 data-item-id={node.id}
                                 data-item-name={node.title}
                                 data-item-price={node.price}
-                                data-item-url="https://www.learncodeonline.in"
+                                data-item-url="https://lco-react-ecommerce.netlify.app/"
                                 data-item-image={node.image.fixed.src}
-                                className="btn btn-sm btn-warning snipcart-add-item">
+                                className="btn btn-sm btn-warning snipcart-add-item"
+                              >
                                 Join Now
                               </button>
                             </div>
