@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'gatsby';
 import logo from '../../images/logo.png'
 import { FaCartArrowDown } from "react-icons/fa"
-import { GiHamburgerMenu } from "react-icons/Gi"
+// import { GiHamburgerMenu } from "react-icons/Gi"
 
 
 export default class Navbar extends Component {
@@ -48,7 +48,7 @@ export default class Navbar extends Component {
               <img src={logo} alt="logo" width="40px" />
             </Link>
             <button className="navbar-toggler" type="button" onClick={this.myToggler}>
-              <GiHamburgerMenu className="menu-icon"/>   
+              Menu   
             </button>
             <div className={this.state.navbarClass}>
               <ul className="navbar-nav ml-auto mr-5">
