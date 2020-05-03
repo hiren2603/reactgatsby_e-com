@@ -9,7 +9,7 @@ const getCaty = items =>{
   })
   let holdCategories = new Set(holdItems)
   let categories = Array.from(holdCategories)
-  categories = ["all", ...categories]
+  categories = ["All", ...categories]
   return categories
 }
 
@@ -22,7 +22,21 @@ export default class Coursecart extends Component {
                 myCategories: getCaty(props.courses.edges)
             }
         }
-    catyClicked = category =>{}
+    catyClicked = category =>{
+
+      let keepItsafe = [...this.state.courses]
+      if (category === 'All') {
+          this.setState(()=>{
+            return { mycourses: keepItsafe}
+        })
+      }else{
+        let holdme = keepItsafe.filter(({node})=>
+          node.category === category)
+          this.setState(()=>{
+            return { mycourses: holdme }
+          })
+      }
+    }
     render() {
         // console.log(this.state.courses);
         
@@ -64,7 +78,7 @@ export default class Coursecart extends Component {
                               <div className="d-flex justify-content-between">
                                 <h6 className="mb-0">{node.title}</h6>
                                 <h6 className="mb-0 text-success">
-                                  $${node.price}
+                                  ${node.price}
                                 </h6>
                               </div>
                               <p className="text-muted">
