@@ -2,14 +2,27 @@ import React, { Component } from 'react'
 import Heading from '../Reusable/Heading'
 import Img from 'gatsby-image'
 
+
+const getCaty = items =>{
+  let holdItems = items.map(items =>{
+    return items.node.category
+  })
+  let holdCategories = new Set(holdItems)
+  let categories = Array.from(holdCategories)
+  categories = ["all", ...categories]
+  return categories
+}
+
 export default class Coursecart extends Component {
         constructor(props){
             super(props)
             this.state = {
                 courses: props.courses.edges,
                 mycourses: props.courses.edges,
+                myCategories: getCaty(props.courses.edges)
             }
         }
+    catyClicked = category =>{}
     render() {
         // console.log(this.state.courses);
         
@@ -17,6 +30,28 @@ export default class Coursecart extends Component {
             <section className="py-5">
             <div className="container">
                 <Heading title="Courses" />
+                <div className="row my-3">
+                  <div className="col-10 mx-auto text-center">
+                    {
+                    this.state.myCategories.map((category,index)=>{
+
+                      return (
+                        <button
+                        type="button"
+                        className="btn btn-info m-3 px-3"
+                        key={index}
+                        onClick={()=>{
+                          this.catyClicked(category)
+                        }}
+                        >
+                        {category}
+                        </button>
+                      )
+                    })
+
+                    }
+                  </div>
+                </div>
                 <div className="row">
                     {this.state.mycourses.map(({node})=>{
                         return (
